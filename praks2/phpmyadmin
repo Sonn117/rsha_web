@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+PHPMYADMIN=$(dpkg-query -W -f='${status}' phpmyadmin 2>/dev/null | grep -c "Phpmyadmin on juba olemas")
+if [ $PHPMYADMIN -eq 0 ]
+then
+	echo "Phpmyadmin installeerimine"
+	pause
+	apt-get install phpmyadmin -y
+
+elif [ $PHPMYADMIN -eq 1 ]
+then
+	systemctl status phpmyadmin
+fi
